@@ -1,0 +1,127 @@
+{%extends 'base.html'%}
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block content%}
+
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <div class="view">
+        <img class="d-block w-100" height="500px" src="/static/doc2.jpg">
+        <div class="mask rgba-black-light"></div>
+        <div class="carousel-caption">
+        <p style="font-size:25px;">Welcome to Doctors app. Post any complications you are facing and we will try and help you.</p>
+      </div>
+        </div>
+      </div>
+    </div>
+  <!--/.Slides--> 
+
+  <!-- Adding a search form  -->
+  <div class='container' style='margin-left: 28%;margin-top: 2%;'>
+      <div class="form-inline ">
+        <form class="navbar-form" role="search" action="{% url 'search_results' %}" >
+            <input type="text"  class="form-control" style='height:40px; width:440px;font-size:15px' placeholder="Search" name="complication">
+              <button style="background-image: url(/static/doc2.jpg);" class="btn btn-default" type="submit"><i style='height:26px;font-size:25px;color:black' class="glyphicon glyphicon-search"></i></button>
+        </form>
+      </div>
+  </div>
+  <!-- Adding a search form  -->
+  <br>
+  <br>
+
+<!-- Adding a modal form  -->
+  {{form.media}}
+
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="width: 64rem;">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Ask</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body mx-3">  
+  <!-- Card body -->
+  <form  action="{%url 'new-complication' %}" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    {% bootstrap_form form%}
+    <input style="font-size:15px; color:black; background-image: url(/static/doc2.jpg);" type="submit" class="btn btn-success btn-lg" value="Post">
+  </form>
+  
+  <!-- Card body -->
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- Adding a modal form  -->
+
+
+<!-- Modal -->
+{{form.media}}
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+  <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Give Feedback</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  action="{%url 'feedback' %}" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    {% bootstrap_form form1%}
+    <input style="font-size:15px; color:black; background-image: url(/static/doc2.jpg);" type="submit" class="btn btn-success btn-lg" value="Post">
+  </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+
+  <!-- Adding a display  -->
+  {% for complication_item in complication %}
+  
+  <div class="container-fluid">
+    <div class="row">
+        <div class="">
+            <div class="card ml-4 mt-4" style="width: 100rem;">
+                <div>
+                <p style="font-size:18px; text-align:center;"><b>{{ complication_item.complication_name }}</b></p>
+                <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+                </div>
+                <div class="card-body">
+                <p class='text-center' style="font-size: 15px">{{complication_item.symptoms}}</p>
+                </div>
+                <hr>
+                {% for feedback_item in feedback %}
+                  <div class="card-body">
+                  <p style="font-size: 15px">{{feedback_item.feedback}}</p>
+                  </div>
+                {% endfor %}
+                <hr>
+                <div>
+                <a href="" style="font-size: 15px" data-toggle="modal" data-target="#exampleModalCenter">Give Feedback</a>
+                </div> 
+                <p style="font-size: 15px">Posted {{complication_item.pub_date|timesince }} ago</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<!-- Adding a display  -->
+
+
+{% endblock %}

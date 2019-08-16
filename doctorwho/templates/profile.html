@@ -1,0 +1,54 @@
+{%extends 'base.html'%}
+{% load bootstrap3 %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+{% block content %}
+
+{{block.super}}
+
+<br>
+
+<div style='font-size:20px;' class="container">
+
+    <div class="span3 well">
+        <center>
+        <a href="#aboutModal" data-toggle="modal" data-target="#myModal"><img src="{{image.url}}" name="aboutme" width="140" height="140" class="img-circle"></a>
+        <h3>{{user.username}}</h3>
+        <em>click my profile photo for more</em><br>
+        <br>
+		    </center>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" id="myModalLabel">More About {{user.username}}</h4>
+                    </div>
+                <div class="modal-body">
+                    <center>
+                    <img src="{{image.url}}" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
+                    <h3 class="media-heading">{{user.username}}</h3>
+                    <span><strong>Contacts: <p class="label label-warning">{{ contact }}</p> </strong></span>
+                    </center>
+                    <center>
+                    <p class="text-left"><strong>Bio: {{ bio }} </strong></p>
+                    </center>
+                </div>
+                <div class="modal-footer">
+                    <center>
+                    <p class="text-left"><strong>Updated </strong> {{ pub_date|timesince }} ago</p>
+                    <button style='font-size:12px;' type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

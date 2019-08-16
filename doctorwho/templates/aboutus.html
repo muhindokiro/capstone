@@ -1,0 +1,87 @@
+{%extends 'base.html'%}
+{% load bootstrap3 %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+{% block content %}
+
+<!-- Card -->
+<div class="card card-cascade wider reverse">
+
+  <!-- Card content -->
+  <div class="card-body card-body-cascade text-center">
+
+    <!-- Title -->
+    <h4 style='font-size:20px;' class="card-title"><strong>About Us</strong></h4>
+    <!-- Subtitle -->
+    <h6 style='font-size:20px;'>Doctorwho</h6>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="">
+            <div class="card ml-4 mt-4" style="width: 40rem;">
+            <p class='text-center' style="font-size: 15px"> Overview </p>
+                <div>
+                <img class="card-img-top" height="250px"  src="/static/doc1.jpg" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                <p class='text-center' style="font-size: 15px">Healthcare industry can benefit a lot from the solutions offered	by	modern	technology. This site for multiple	sclerosis	
+patients that enables them to communicate with	
+other users	through	a chat which serves as	
+a  knowledge resource.</p>
+                </div>
+            </div>
+        </div>
+
+        
+            <div class="">
+            <div class="card ml-4 mt-4" style="width: 40rem;">
+            <p class='text-center' style="font-size: 15px"> Challenges Faced </p>
+                <div>
+                    <img class="card-img-top" height="250px"  src="/static/doc3.jpg" alt="Card image cap">
+                </div>
+                <div class="card-body" style="font-size: 15px">
+                <p class='text-center'> Expensive.<hr>
+                Requires time to adapt fast.<hr>
+                Over-dependency on technology.<hr>
+                 </p>
+                </div>
+            </div>
+        </div>
+                <div class="">
+            <div class="card ml-4 mt-4" style="width: 40rem;">
+            <p class='text-center' style="font-size: 15px">Future Implementions</p>
+                <div>
+                    <img class="card-img-top" height="250px"  src="/static/doc2.jpeg" alt="Card image cap">
+                <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            </div>
+                </div>
+                <div class="card-body"  style="font-size: 12px">
+            <p class='text-center'> Easy Access To Patient Data.<hr>
+Cost Effective & Improve data security.<hr>
+Improved Efficiency & Patient Care.<hr>
+Increased Data Security & Retrieve-ability.
+</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--/.Card-->
+
+    <!-- Linkedin -->
+    <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in fa-2x"></i></a>
+    <!-- Twitter -->
+    <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter fa-2x"></i></a>
+    <!-- Dribbble -->
+    <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f fa-2x"></i></a>
+
+  </div>
+
+</div>
+<!-- Card -->
+
+{% endblock %}

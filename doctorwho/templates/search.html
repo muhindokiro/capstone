@@ -1,0 +1,58 @@
+{%extends 'base.html'%} 
+{% block content %}
+<br>
+<a href="{%url 'index' %}"><p style="font-size:18px; text-align:center;"><b>Back to home page</b></p></a>
+
+<div class="container">
+  <div class="row">
+  <br>
+    {% if complications %}
+      <h2 style='color:black;'>Found {{ complications|length }} complication by the name {{message}}</h2>
+    {% else %}
+      <h2> Found 0 complications by the name {{message}}</h2>
+    {% endif %}
+
+  </div>
+
+<!-- Adding a display  -->
+  <div class="row">
+  {% if complications %}
+   {% for complication in complications %}
+  
+  <div class="container-fluid">
+    <div class="row">
+        <div class="">
+            <div class="card ml-4 mt-4" style="width: 100rem;">
+                <div>
+                <p style="font-size: 15px">{{user.username}}</p>
+                <p style="font-size:18px; text-align:center;"><b>{{ complication.complication_name }}</b></p>
+                <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+                </div>
+                <div class="card-body">
+                <p class='text-center' style="font-size: 15px">{{complication.symptoms}}</p>
+                </div>
+                <hr>
+                {% comment %} {% if feedbacks %}
+                {% for feedback in feedbacks %} {% endcomment %}
+                  <div class="card-body">
+                  <p style="font-size: 15px">Feedback can only be view in the home page!</p>
+                  </div>
+                {% comment %} {% endfor %}
+                {% endif %} {% endcomment %}
+                <hr>
+                <div>
+                <a href="" style="font-size: 15px" data-toggle="modal" data-target="#exampleModalCenter">Give Feedback</a>
+                </div> 
+                <p style="font-size: 15px">Posted {{complication.pub_date|timesince }} ago</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Adding a display  -->
+{% endfor %}
+
+  {% endif %}
+  </div>
+</div>
+
+{% endblock %}

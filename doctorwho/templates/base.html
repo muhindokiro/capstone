@@ -1,0 +1,59 @@
+{% load bootstrap3 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {% if title %}
+  <title>Doctorwho - {{title}}</title>
+  {% else %}
+    <title> Doctorwho </title>
+  {% endif %}
+
+  {% block styles %}
+    {% bootstrap_css %}
+   <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/css/mdb.min.css" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">  
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  
+  {% endblock %}
+
+</head>
+
+<body style="font-family: 'Courgette', cursive; overflow-x: hidden;">
+
+    {% include "navbar.html" %}
+
+    {% block content %}
+
+    {%endblock%}
+   
+    <br>
+
+{% block scripts %}
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/js/mdb.min.js"></script>
+{% comment %} <script rel="stylesheet" src="{% static 'js/scripts.js' %}"></script> {% endcomment %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{% bootstrap_javascript %}
+{% endblock%}
+
+</body>
+</html>
